@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--index.html HOME PAGE-->
+{% if object_list %}
+<h3 class="subtitle">All books</h3>
+{% endif %}
+<ul>
+    {% for booklist in object_list %}
+    <li>
+        <div
+            class="book-title"
+            role="button"
+            onclick="location.href='{% url "book" booklist.id %}'">
+            {{ booklist.title }}
+        </div>
+        <form>
+        <div class="checkbox">
+        {% if booklist.status %}
+            <input type="checkbox" id={{booklist.id}} name="read" value="read"  onclick=myFunction({{booklist.id}}) checked  />
+        {% else %}
+            <input type="checkbox" id={{booklist.id}} name="read" value="read" onclick=myFunction({{booklist.id}}) >
+        {% endif %}
+        <label for="book-status">Read</label>
+        </div>
+        </form>
+
+    </li>
+    {% empty %}
+    <h4>You have no book!</h4>
+    {% endfor %}
+</ul>
+
+<p>
+    <input
+        class="add-book-button"
+        value="Add a new book"
+        type="button"
+        onclick="location.href='{% url "add-book" %}'"/>
+
+</p>
+<p>
+    
+    <a class="logout-link" href="{% url 'login' %}">Log Out</a>
+    
+</p> 
+    
+  
+{% block javascript %}
+<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+
+  <script>
+    
+    function myFunction(id) {
+        
+      $.ajax({
+        url: '{% url "book-update" %}',
+        type:   "POST",
+        data: {
+            csrfmiddlewaretoken: window.CSRF_TOKEN,
+
+          'id': id,
+        },
+        dataType: 'json',
+        success: function (data) {
+  
+        }
+      });
+    }
+  </script>
+{% endblock %}
+
+
+{% endblock %}

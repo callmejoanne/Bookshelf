@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    {% load static %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js">
+    </script>
+    <title>Bookshelf</title>
+</head>
+
+<body>
+    <div>
+        
+        <h1 class="registration-page-title" >
+            Bookshelf
+        </h1>
+    </div>
+    <div>
+        {% block content %}
+        This content will be replaced by different html code for each page.
+        {% endblock %}
+    </div>
+</body>
+
+</html>

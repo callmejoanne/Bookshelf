@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<h3>Delete Book</h3>
+
+<p>Are you sure you want to delete the book <i>{{ object.title }}</i> ?</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <input class="confirm-remove-button" value="Yes, remove." type="submit" />
+</form>
+<input class="cancel-button" value="Cancel" type="button" onclick="location.href='{% url "home" %}'">
+{% endblock %}

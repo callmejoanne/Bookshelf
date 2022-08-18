@@ -1,0 +1,20 @@
+{% extends 'registration_base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1>Log In</h>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="login-button" type="submit">Log In</button>
+</form>
+
+<p>
+  <input
+      class="signup-button"
+      value="Sign Up"
+      type="button"
+      onclick="location.href='{% url "signup" %}'"/>
+</p>
+{% endblock %}

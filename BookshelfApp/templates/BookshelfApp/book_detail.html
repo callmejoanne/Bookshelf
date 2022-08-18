@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% block content %}
+<div>
+  <div>
+    <div>
+      <h3>{{ Book.title | upper }}  </h3>
+    </div>
+    <p>Status :</p>
+    {% if Book.status  %}
+    <p>
+        Finish reading. Read again?
+    </p>
+    {% else %}
+    <p>To be read.</p>
+    {% endif %}
+
+    <p>
+       <input
+                class="remove-book-button"
+                value="Remove this book"
+                type="button"
+                onclick="location.href=
+                '{% url "book-delete" Book.id %}'" /> 
+    </p>
+  </div>
+</div>
+{% endblock %}
